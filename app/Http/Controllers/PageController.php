@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Main;
 use App\Models\Service;
 use App\Models\Portfolio;
+use App\Models\About;
 
 class PageController extends Controller
 {
@@ -19,10 +20,11 @@ class PageController extends Controller
     }
 
     public function index(){
+        $abouts=About::all();
         $portfolios=Portfolio::all();
         $services=Service::all();
         $main=Main::first();
-        return view('pages.index',compact('main','services','portfolios'));
+        return view('pages.index',compact('main','services','portfolios','abouts'));
     }
 
     

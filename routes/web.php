@@ -32,7 +32,10 @@ Route::delete('/portfolio/show/{id}',[PortfolioPagesController::class,'destroy']
 
 Route::get('/about/create',[AboutPagesController::class,'create'])->name('admin.about.create');
 Route::post('/about/create',[AboutPagesController::class,'store'])->name('admin.about.store');
-Route::get('/about/show',[AboutPagesController::class,'show'])->name('admin.about.show');
+Route::get('/about/show',[AboutPagesController::class,'index'])->name('admin.about.show');
+Route::get('/about/edit/{id}',[AboutPagesController::class,'edit'])->name('admin.about.edit');
+Route::put('/about/update/{id}',[AboutPagesController::class,'update'])->name('admin.about.update');
+Route::delete('/about/show/{id}',[AboutPagesController::class,'destroy'])->name('admin.about.destroy');
 
 });
 

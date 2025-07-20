@@ -86,7 +86,7 @@
                             <div class="collapse" id="collapseAbout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{route('admin.about.create')}}">Create</a>
-                                    <a class="nav-link" href="{{route('admin.portfolio.show')}}">List</a>
+                                    <a class="nav-link" href="{{route('admin.about.show')}}">List</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="charts.html">

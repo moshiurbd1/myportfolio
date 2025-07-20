@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\MainPagesController;
 use App\Http\Controllers\ServicePagesController;
 use App\Http\Controllers\PortfolioPagesController;
+use App\Http\Controllers\AboutPagesController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -14,6 +15,7 @@ Route::prefix('admin')->group(function(){
 Route::get('/dashboard',[PageController::class,'dashboard'])->name('admin.dashboard');
 Route::get('/main',[MainPagesController::class,'index'])->name('admin.main');
 Route::put('/main',[MainPagesController::class,'update'])->name('admin.main.update');
+
 Route::get('/service/create',[ServicePagesController::class,'create'])->name('admin.service.create');
 Route::post('/service/create',[ServicePagesController::class,'store'])->name('admin.service.store');
 Route::get('/service/show',[ServicePagesController::class,'show'])->name('admin.service.show');
@@ -27,6 +29,10 @@ Route::post('/portfolio/create',[PortfolioPagesController::class,'store'])->name
 Route::get('/portfolio/edit/{id}',[PortfolioPagesController::class,'edit'])->name('admin.portfolio.edit');
 Route::put('/portfolio/update/{id}',[PortfolioPagesController::class,'update'])->name('admin.portfolio.update');
 Route::delete('/portfolio/show/{id}',[PortfolioPagesController::class,'destroy'])->name('admin.portfolio.destroy');
+
+Route::get('/about/create',[AboutPagesController::class,'create'])->name('admin.about.create');
+Route::post('/about/create',[AboutPagesController::class,'store'])->name('admin.about.store');
+Route::get('/about/show',[AboutPagesController::class,'show'])->name('admin.about.show');
 
 });
 

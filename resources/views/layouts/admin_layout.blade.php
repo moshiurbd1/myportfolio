@@ -78,10 +78,17 @@
                                 </nav>
                             </div>
 
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAbout" aria-expanded="false" aria-controls="collapseAbout">
+                                <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
                                 About
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            <div class="collapse" id="collapseAbout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('admin.about.create')}}">Create</a>
+                                    <a class="nav-link" href="{{route('admin.portfolio.show')}}">List</a>
+                                </nav>
+                            </div>
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
                                 Contact

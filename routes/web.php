@@ -6,6 +6,7 @@ use App\Http\Controllers\MainPagesController;
 use App\Http\Controllers\ServicePagesController;
 use App\Http\Controllers\PortfolioPagesController;
 use App\Http\Controllers\AboutPagesController;
+use App\Http\Controllers\TeamPagesController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -25,7 +26,7 @@ Route::delete('/service/update/{id}',[ServicePagesController::class,'destroy'])-
 
 Route::get('/portfolio/show',[PortfolioPagesController::class,'index'])->name('admin.portfolio.show');
 Route::get('/portfolio/create',[PortfolioPagesController::class,'create'])->name('admin.portfolio.create');
-Route::post('/portfolio/create',[PortfolioPagesController::class,'store'])->name('admin.portfolio.update');
+Route::post('/portfolio/create',[PortfolioPagesController::class,'store'])->name('admin.portfolio.store');
 Route::get('/portfolio/edit/{id}',[PortfolioPagesController::class,'edit'])->name('admin.portfolio.edit');
 Route::put('/portfolio/update/{id}',[PortfolioPagesController::class,'update'])->name('admin.portfolio.update');
 Route::delete('/portfolio/show/{id}',[PortfolioPagesController::class,'destroy'])->name('admin.portfolio.destroy');
@@ -36,6 +37,13 @@ Route::get('/about/show',[AboutPagesController::class,'index'])->name('admin.abo
 Route::get('/about/edit/{id}',[AboutPagesController::class,'edit'])->name('admin.about.edit');
 Route::put('/about/update/{id}',[AboutPagesController::class,'update'])->name('admin.about.update');
 Route::delete('/about/show/{id}',[AboutPagesController::class,'destroy'])->name('admin.about.destroy');
+
+Route::get('/team/create',[TeamPagesController::class,'create'])->name('admin.team.create');
+Route::post('/team/create',[TeamPagesController::class,'store'])->name('admin.team.store');
+Route::get('/team/show',[TeamPagesController::class,'index'])->name('admin.team.show');
+Route::get('/team/edit/{id}',[TeamPagesController::class,'edit'])->name('admin.team.edit');
+Route::put('/team/update/{id}',[TeamPagesController::class,'update'])->name('admin.team.update');
+Route::delete('/team/show/{id}',[TeamPagesController::class,'destroy'])->name('admin.team.destroy');
 
 });
 

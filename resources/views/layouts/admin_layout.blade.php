@@ -89,6 +89,18 @@
                                     <a class="nav-link" href="{{route('admin.about.show')}}">List</a>
                                 </nav>
                             </div>
+
+                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTeam" aria-expanded="false" aria-controls="collapseTeam">
+                                <div class="sb-nav-link-icon"><i class="fa fa-people-group"></i></div>
+                                Team
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseTeam" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('admin.team.create')}}">Create</a>
+                                    <a class="nav-link" href="{{route('admin.team.show')}}">List</a>
+                                </nav>
+                            </div>
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
                                 Contact

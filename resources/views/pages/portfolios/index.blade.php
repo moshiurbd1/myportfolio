@@ -10,58 +10,51 @@
 
         @include('alert.messages')
 
-        <table class="table">
-  <thead>
-    <tr class="bg-dark text-white">
-      <th scope="col">ID</th>
-      <th scope="col">Icon</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th>Big Image</th>
-      <th>Small Image</th>
-      <th>Client</th>
-      <th>Category</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    @if(count($portfolios)>0)
-        @foreach($portfolios as $portfolio)
-                    <tr>
-      <th scope="row">{{$portfolio->id}}</th>
-      
-      <td>{{$portfolio->title}}</td>
-      <td>{{$portfolio->sub_title}}</td>
-      <td>{{Str::limit(strip_tags($portfolio->description),40)}}</td>
-      <td><img width="100px" src="{{asset($portfolio->big_image)}}" alt=""></td>
-      <td><img width="100px" src="{{asset($portfolio->small_image)}}" alt=""></td>
-      <td>{{$portfolio->client}}</td>
-      <td>{{$portfolio->category}}</td>
-      <td>
-        <div class="col-sm-2">
-            <a href="{{route('admin.portfolio.edit',$portfolio->id)}}" class="btn btn-primary">Edit</a> 
-        </div> 
-        <div class="col-sm-2">
-            <form action="{{route('admin.portfolio.destroy',$portfolio->id)}}" method="post">
-            @csrf    
-            @method('DELETE')
-            <input type="submit" value="Delete" class="btn btn-danger">
-            </form>
-        </div>
-        
-      </td>
-    </tr>
-        @endforeach
-    @endif
-
-  </tbody>
-</table>
+        <table class="table table-bordered table-striped align-middle text-center">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Sub Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Big Image</th>
+                    <th scope="col">Small Image</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(count($portfolios) > 0)
+                    @foreach($portfolios as $portfolio)
+                        <tr>
+                            <th scope="row">{{ $portfolio->id }}</th>
+                            <td>{{ $portfolio->title }}</td>
+                            <td>{{ $portfolio->sub_title }}</td>
+                            <td>{{ Str::limit(strip_tags($portfolio->description), 40) }}</td>
+                            <td>
+                                <img width="100px" src="{{ asset($portfolio->big_image) }}" alt="Big Image">
+                            </td>
+                            <td>
+                                <img width="100px" src="{{ asset($portfolio->small_image) }}" alt="Small Image">
+                            </td>
+                            <td>{{ $portfolio->client }}</td>
+                            <td>{{ $portfolio->category }}</td>
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a href="{{ route('admin.portfolio.edit', $portfolio->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <form action="{{ route('admin.portfolio.destroy', $portfolio->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+            </tbody>
+        </table>
     </div>
 </main>
 @endsection
-
-
-
-
-
-

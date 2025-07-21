@@ -7,6 +7,7 @@ use App\Models\Main;
 use App\Models\Service;
 use App\Models\Portfolio;
 use App\Models\About;
+use App\Models\Team;
 
 class PageController extends Controller
 {
@@ -20,11 +21,12 @@ class PageController extends Controller
     }
 
     public function index(){
+        $teamMembers=Team::all();
         $abouts=About::all();
         $portfolios=Portfolio::all();
         $services=Service::all();
         $main=Main::first();
-        return view('pages.index',compact('main','services','portfolios','abouts'));
+        return view('pages.index',compact('main','services','portfolios','abouts','teamMembers'));
     }
 
     

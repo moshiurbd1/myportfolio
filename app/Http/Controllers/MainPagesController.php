@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Main;
-
+use App\Models\Logo;
 
 class MainPagesController extends Controller
 {
@@ -93,7 +93,7 @@ class MainPagesController extends Controller
     $customName = 'main_background.' . $img_file->getClientOriginalExtension();
     $img_file->move(public_path('img'), $customName); // Direct to public/img
     $main->bg_image = 'img/' . $customName;
-}
+    }
 
 
     if ($request->file('resume')) {
@@ -106,7 +106,7 @@ class MainPagesController extends Controller
 
     return redirect()->route('admin.main')->with('success', 'Main page data updated successfully');
 }
-
+ 
 
     /**
      * Remove the specified resource from storage.

@@ -3,17 +3,38 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\MainPagesController;
+use App\Http\Controllers\LogoController;
 use App\Http\Controllers\ServicePagesController;
 use App\Http\Controllers\PortfolioPagesController;
 use App\Http\Controllers\AboutPagesController;
 use App\Http\Controllers\TeamPagesController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 Route::get('/',[PageController::class,'index'])->name('home');
 
+//Login routes
+Route::get('/login',[LoginController::class,'login'])->name('login');
+Route::post('/login_confirm',[LoginController::class,'confirm_confirm'])->name('login_confirm');
+
+
+
+
+Route::group(['middleware'=>'auth'],function(){
+//Register routes
+Route::get('register',[RegisterController::class,'register'])->name('register');
+Route::post('register_confirm',[RegisterController::class,'register_confirm'])->name('register_confirm');
+
 Route::prefix('admin')->group(function(){
 Route::get('/dashboard',[PageController::class,'dashboard'])->name('admin.dashboard');
+
+Route::get('/logo',[LogoController::class,'logo'])->name('admin.logo');
+Route::put('/logo',[LogoController::class,'logoUpdate'])->name('admin.logo.update');
+
 Route::get('/main',[MainPagesController::class,'index'])->name('admin.main');
 Route::put('/main',[MainPagesController::class,'update'])->name('admin.main.update');
 
@@ -45,7 +66,16 @@ Route::get('/team/edit/{id}',[TeamPagesController::class,'edit'])->name('admin.t
 Route::put('/team/update/{id}',[TeamPagesController::class,'update'])->name('admin.team.update');
 Route::delete('/team/show/{id}',[TeamPagesController::class,'destroy'])->name('admin.team.destroy');
 
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+
 });
+
+});
+
+
+
+Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+
 
 
 

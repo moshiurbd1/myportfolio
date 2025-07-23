@@ -14,6 +14,13 @@ class RegisterController extends Controller
     }
 
     public function register_confirm(Request $request){
+
+        $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|confirmed|min:6'
+        
+    ]);
         $data=$request->only('name','email');
         $data['password']=Hash::make($request->password);
         if(User::create($data)){
